@@ -1,0 +1,10 @@
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\bin\Debug\C#LABA_8.exe.config
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\bin\Debug\C#LABA_8.exe
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\bin\Debug\C#LABA_8.pdb
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\obj\Debug\C#LABA_8.csproj.AssemblyReference.cache
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\obj\Debug\C_LABA_8.Form1.resources
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\obj\Debug\C_LABA_8.Properties.Resources.resources
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\obj\Debug\C#LABA_8.csproj.GenerateResource.cache
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\obj\Debug\C#LABA_8.csproj.CoreCompileInputs.cache
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\obj\Debug\C#LABA_8.exe
+C:\Users\romau\source\repos\C#LABA_8\C#LABA_8\obj\Debug\C#LABA_8.pdb
