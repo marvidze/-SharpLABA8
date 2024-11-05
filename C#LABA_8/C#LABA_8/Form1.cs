@@ -12,95 +12,31 @@ namespace C_LABA_8
 {
     public partial class Form1 : Form
     {
-        private static long[] ints;
-        private static long key = 234583;
+        private static int key = 45678;
         int keyInt = 45678;
-        private static long quad = key * key;
-        private static int adress = 100;
+        private static int quad = key * key;
+        private static int address = 1000;
+        const int HASH_SIZE = 3;
+        const int PROSTOE_CHISLO = 997;
 
-        public Form1()
+        static int GetHashCodeMidleSquare(int key, int hashSize)
         {
-            InitializeComponent();
-            
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        static long GetMiddleDigits(long num, long count)
-        {
-            // Находим количество цифр в числе
-            long length = GetLength(num);
-            // Находим середину
-            long middleIndex = length / 2;
-
-            // Если длина четная, начинаем с middleIndex - 1
-            // Если длина нечетная, начинаем с middleIndex - count / 2
-            long startIndex = (length % 2 == 0) ? (middleIndex - count / 2 - 1) : (middleIndex - count / 2);
-
-            return Convert.ToInt64(GetMedian(startIndex, count));
-
-        }
-
-        static long GetHashMiddleSquare()
-        {
-            long middleCount = GetLength(adress); //(adress % 10 == 0) ? GetLength(adress) : 
-            ints = new long[GetLength(quad)];
-            SetValueArray(quad);
-            // Получаем середину числа
-            var result = GetMiddleDigits(quad, middleCount);
-            // коэффициент (умножаем на результат в случае не кратности его на 10)
-            double koef = (double)adress / 1000;
-            long hashCode = (adress % 10 != 0) ? (long)(result * koef) : GetMiddleDigits(quad, middleCount);
-            long m = GetLength(quad);
-            ints = new long[m];
+            int hashCode = key * key;
+            int hashCodeSize = (int)Math.Log10(hashCode) + 1;
+            hashCode /= (int)Math.Pow(10, (hashCodeSize - hashSize) / 2);
+            hashCode %= (int)Math.Pow(10, hashSize);
             return hashCode;
         }
-
-        static long GetLength(long num)
-        {
-            long length = 0;
-            while (num > 0)
-            {
-                num /= 10;
-                length++;
-            }
-            return length;
-        }
-
-        static string GetMedian(long startIndex, long count)
-        {
-            string resultString = string.Empty;
-
-            for (int i = 0; i < count; i++)
-            {
-                resultString += ints[startIndex + i];
-            }
-
-            return resultString;
-        }
-
-        static void SetValueArray(long num)
-        {
-
-            for (long i = GetLength(num) - 1; i >= 0; i--)
-            {
-                ints[i] = num % 10;
-                num /= 10;
-            }
-        }
-
-        static int MultiplicationMethod(int key, int adress)
+        static int GetHashCodeMultiplicationMethod(int key, int adress)
         {
             const double A = 0.618033988749895;
             double result = key * A;
-            double fractionalPart = result - Math.Floor(result); //получение дробной части от умножения
+            double fractionalPart = result - Math.Floor(result); 
             int heshKey = (int)(fractionalPart * adress);
             return heshKey;
         }
 
-        static int GetHashFoldingMethod(int key, int address)
+        static int GetHashCodeFoldingMethod(int key, int address)
         {
             int heshKey = 0;
 
@@ -113,9 +49,9 @@ namespace C_LABA_8
             return heshKey;
         }
 
-        public int GetHashCodeDivisionMethod(int n)
+        public int GetHashCodeDivisionMethod(int key, int m)
         {
-            return n / 1000;
+            return key % m;
         }
 
         private void ButtonExitClick(object sender, EventArgs e)
@@ -127,10 +63,21 @@ namespace C_LABA_8
         {
 
             
-            textBoxMiddleOfSquare.Text = GetHashMiddleSquare().ToString();
-            textBoxDivisionMethod.Text = GetHashCodeDivisionMethod(keyInt).ToString();
-            textBoxMultiplication.Text = MultiplicationMethod(keyInt, adress).ToString();
-            textBoxFolding.Text = GetHashFoldingMethod(keyInt, adress).ToString();
+            textBoxMiddleOfSquare.Text = GetHashCodeMidleSquare(key, HASH_SIZE).ToString();
+            textBoxDivisionMethod.Text = GetHashCodeDivisionMethod(keyInt, PROSTOE_CHISLO).ToString();
+            textBoxMultiplication.Text = GetHashCodeMultiplicationMethod(keyInt, address).ToString();
+            textBoxFolding.Text = GetHashCodeFoldingMethod(keyInt, address).ToString();
+        }
+
+        public Form1()
+        {
+            InitializeComponent();
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
